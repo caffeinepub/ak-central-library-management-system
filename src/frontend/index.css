@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================
+   AK Central Library — Design Tokens
+   Red + Golden Yellow mobile-first theme
+   ========================================= */
+
+/* Pre-bundled font: Plus Jakarta Sans for body, Bricolage Grotesque for display */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans-VariableFont_wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* AK Library Red + Gold Palette */
+    /* background: warm off-white */
+    --background: 0.985 0.005 50;
+    --foreground: 0.18 0.02 30;
+
+    /* card: pure white */
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.02 30;
+
+    /* popover */
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.02 30;
+
+    /* primary: AK Red #CC0000 → oklch(0.43 0.22 27) */
+    --primary: 0.43 0.22 27;
+    --primary-foreground: 1 0 0;
+
+    /* secondary: light rose */
+    --secondary: 0.95 0.02 30;
+    --secondary-foreground: 0.43 0.22 27;
+
+    /* muted: soft gray-rose */
+    --muted: 0.94 0.01 40;
+    --muted-foreground: 0.5 0.03 30;
+
+    /* accent: golden yellow #FFD700 → oklch(0.88 0.18 95) */
+    --accent: 0.88 0.18 95;
+    --accent-foreground: 0.18 0.02 30;
+
+    /* destructive */
+    --destructive: 0.43 0.22 27;
+    --destructive-foreground: 1 0 0;
+
+    /* borders */
+    --border: 0.9 0.01 30;
+    --input: 0.92 0.01 30;
+    --ring: 0.43 0.22 27;
+
+    /* charts */
+    --chart-1: 0.43 0.22 27;
+    --chart-2: 0.88 0.18 95;
+    --chart-3: 0.62 0.15 27;
+    --chart-4: 0.55 0.12 95;
+    --chart-5: 0.75 0.08 30;
+
+    /* sidebar — same as app colors */
+    --sidebar: 0.43 0.22 27;
+    --sidebar-foreground: 1 0 0;
+    --sidebar-primary: 0.88 0.18 95;
+    --sidebar-primary-foreground: 0.18 0.02 30;
+    --sidebar-accent: 0.55 0.15 27;
+    --sidebar-accent-foreground: 1 0 0;
+    --sidebar-border: 0.55 0.15 27;
+    --sidebar-ring: 0.88 0.18 95;
+
+    /* Library custom tokens */
+    --lib-red: 0.43 0.22 27;
+    --lib-red-dark: 0.35 0.20 27;
+    --lib-red-light: 0.62 0.15 27;
+    --lib-gold: 0.88 0.18 95;
+    --lib-gold-dark: 0.78 0.16 90;
+    --lib-success: 0.55 0.14 145;
+    --lib-warning: 0.75 0.16 75;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+
+  /* Mobile viewport fix */
+  html {
+    height: -webkit-fill-available;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* =============================================
+   AK Library Utility Classes
+   ============================================= */
+
+@layer utilities {
+  /* Red background utilities */
+  .bg-lib-red {
+    background-color: oklch(var(--lib-red));
+  }
+  .bg-lib-red-dark {
+    background-color: oklch(var(--lib-red-dark));
+  }
+  .bg-lib-gold {
+    background-color: oklch(var(--lib-gold));
+  }
+
+  /* Text color utilities */
+  .text-lib-red {
+    color: oklch(var(--lib-red));
+  }
+  .text-lib-gold {
+    color: oklch(var(--lib-gold));
+  }
+  .text-lib-red-dark {
+    color: oklch(var(--lib-red-dark));
+  }
+
+  /* Border utilities */
+  .border-lib-red {
+    border-color: oklch(var(--lib-red));
+  }
+  .border-lib-gold {
+    border-color: oklch(var(--lib-gold));
+  }
+
+  /* Success/warning */
+  .text-lib-success {
+    color: oklch(var(--lib-success));
+  }
+  .bg-lib-success {
+    background-color: oklch(var(--lib-success) / 0.15);
+  }
+
+  /* Mobile app container */
+  .mobile-container {
+    max-width: 430px;
+    margin: 0 auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    position: relative;
+    overflow: hidden;
+    background-color: oklch(var(--background));
+    box-shadow: 0 0 40px rgba(0,0,0,0.15);
+  }
+
+  /* Sticky red header */
+  .lib-header {
+    background: linear-gradient(135deg, oklch(var(--lib-red-dark)), oklch(var(--lib-red)));
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  /* Bottom nav bar */
+  .lib-bottom-nav {
+    background: white;
+    border-top: 1px solid oklch(var(--border));
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 430px;
+    z-index: 50;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+  }
+
+  /* Content area with bottom nav padding */
+  .lib-content {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+    overflow-y: auto;
+  }
+
+  /* Card style */
+  .lib-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid oklch(var(--border));
+  }
+
+  /* Badge styles */
+  .badge-available {
+    background-color: oklch(var(--lib-success) / 0.15);
+    color: oklch(var(--lib-success));
+    border: 1px solid oklch(var(--lib-success) / 0.3);
+  }
+  .badge-unavailable {
+    background-color: oklch(var(--lib-red) / 0.1);
+    color: oklch(var(--lib-red));
+    border: 1px solid oklch(var(--lib-red) / 0.2);
+  }
+
+  /* Gold button */
+  .btn-gold {
+    background-color: oklch(var(--lib-gold));
+    color: oklch(var(--lib-red-dark));
+    font-weight: 700;
+    border: none;
+  }
+  .btn-gold:hover {
+    background-color: oklch(var(--lib-gold-dark));
+  }
+
+  /* Scrollbar hide for filter chips */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Print styles for receipts */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    .print-only {
+      display: block !important;
+    }
+    body {
+      background: white;
+    }
+  }
+}
