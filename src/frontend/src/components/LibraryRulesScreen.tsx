@@ -135,7 +135,7 @@ export default function LibraryRulesScreen() {
       {/* Header banner */}
       <div
         className="px-4 py-5 text-center"
-        style={{ background: "linear-gradient(135deg, #990000, #CC0000)" }}
+        style={{ background: "linear-gradient(135deg, #3B0764, #7C3AED)" }}
       >
         <div className="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center mx-auto mb-3">
           <Shield size={24} className="text-white" />
@@ -185,11 +185,11 @@ export default function LibraryRulesScreen() {
             >
               <AccordionTrigger
                 data-ocid={`rules.${section.id}.toggle`}
-                className="px-3 py-3 hover:no-underline hover:bg-secondary/50 [&[data-state=open]]:bg-lib-red/5"
+                className="px-3 py-3 hover:no-underline hover:bg-secondary/50 [&[data-state=open]]:bg-lib-violet/5"
               >
                 <div className="flex items-center gap-2.5 flex-1 min-w-0 text-left">
-                  <div className="w-8 h-8 rounded-lg bg-lib-red/10 flex items-center justify-center flex-shrink-0">
-                    <section.icon size={16} className="text-lib-red" />
+                  <div className="w-8 h-8 rounded-lg bg-lib-violet/10 flex items-center justify-center flex-shrink-0">
+                    <section.icon size={16} className="text-lib-violet" />
                   </div>
                   <span className="font-semibold text-sm text-foreground flex-1 leading-snug">
                     {section.title}
@@ -197,7 +197,7 @@ export default function LibraryRulesScreen() {
                   {section.badge && (
                     <Badge
                       variant="outline"
-                      className="text-xs border-lib-red text-lib-red flex-shrink-0 mr-1"
+                      className="text-xs border-lib-violet text-lib-violet flex-shrink-0 mr-1"
                     >
                       {section.badge}
                     </Badge>
@@ -215,7 +215,7 @@ export default function LibraryRulesScreen() {
                       data-ocid={`rules.${section.id}.item.${idx + 1}`}
                       className="flex gap-2.5 items-start"
                     >
-                      <span className="flex-shrink-0 w-5 h-5 rounded-full bg-lib-red text-white text-xs font-bold flex items-center justify-center mt-0.5">
+                      <span className="flex-shrink-0 w-5 h-5 rounded-full bg-lib-violet text-white text-xs font-bold flex items-center justify-center mt-0.5">
                         {idx + 1}
                       </span>
                       <p className="text-sm text-foreground leading-relaxed flex-1">

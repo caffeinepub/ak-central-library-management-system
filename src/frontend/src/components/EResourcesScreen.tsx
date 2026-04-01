@@ -88,8 +88,8 @@ export default function EResourcesScreen() {
               className="lib-card p-3"
             >
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-xl bg-lib-red/10 flex items-center justify-center flex-shrink-0">
-                  <BookOpen size={18} className="text-lib-red" />
+                <div className="w-10 h-10 rounded-xl bg-lib-violet/10 flex items-center justify-center flex-shrink-0">
+                  <BookOpen size={18} className="text-lib-violet" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-bold text-foreground leading-snug">
@@ -111,7 +111,7 @@ export default function EResourcesScreen() {
               <div className="flex gap-2 mt-3">
                 <Button
                   size="sm"
-                  className="flex-1 bg-lib-red hover:bg-lib-red-dark text-white text-xs"
+                  className="flex-1 bg-lib-violet hover:bg-lib-violet-dark text-white text-xs"
                   onClick={() => window.open(e.fileUrl, "_blank")}
                 >
                   <Download size={12} className="mr-1" />
@@ -142,21 +142,21 @@ export default function EResourcesScreen() {
           <TabsTrigger
             data-ocid="eresources.tab.1"
             value="ebooks"
-            className="flex-1 data-[state=active]:text-lib-red data-[state=active]:border-b-2 data-[state=active]:border-lib-red rounded-none text-xs font-semibold"
+            className="flex-1 data-[state=active]:text-lib-violet data-[state=active]:border-b-2 data-[state=active]:border-lib-violet rounded-none text-xs font-semibold"
           >
             E-Books ({ebooks.length})
           </TabsTrigger>
           <TabsTrigger
             data-ocid="eresources.tab.2"
             value="ejournals"
-            className="flex-1 data-[state=active]:text-lib-red data-[state=active]:border-b-2 data-[state=active]:border-lib-red rounded-none text-xs font-semibold"
+            className="flex-1 data-[state=active]:text-lib-violet data-[state=active]:border-b-2 data-[state=active]:border-lib-violet rounded-none text-xs font-semibold"
           >
             E-Journals ({ejournals.length})
           </TabsTrigger>
           <TabsTrigger
             data-ocid="eresources.tab.3"
             value="dmags"
-            className="flex-1 data-[state=active]:text-lib-red data-[state=active]:border-b-2 data-[state=active]:border-lib-red rounded-none text-xs font-semibold"
+            className="flex-1 data-[state=active]:text-lib-violet data-[state=active]:border-b-2 data-[state=active]:border-lib-violet rounded-none text-xs font-semibold"
           >
             Digital ({dmags.length})
           </TabsTrigger>
@@ -177,7 +177,7 @@ export default function EResourcesScreen() {
           type="button"
           data-ocid="eresources.add_button"
           onClick={openAdd}
-          className="fixed bottom-20 right-4 w-14 h-14 bg-lib-red hover:bg-lib-red-dark text-white rounded-full shadow-lg flex items-center justify-center no-print"
+          className="fixed bottom-20 right-4 w-14 h-14 bg-lib-violet hover:bg-lib-violet-dark text-white rounded-full shadow-lg flex items-center justify-center no-print"
           style={{ zIndex: 40 }}
         >
           <Plus size={24} />
@@ -253,7 +253,7 @@ export default function EResourcesScreen() {
               Cancel
             </Button>
             <Button
-              className="flex-1 bg-lib-red hover:bg-lib-red-dark text-white"
+              className="flex-1 bg-lib-violet hover:bg-lib-violet-dark text-white"
               onClick={handleSave}
             >
               Add

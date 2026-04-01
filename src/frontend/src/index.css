@@ -10,7 +10,8 @@
 /* Pre-bundled font: Plus Jakarta Sans for body, Bricolage Grotesque for display */
 @font-face {
   font-family: "Plus Jakarta Sans";
-  src: url("/assets/fonts/PlusJakartaSans-VariableFont_wght.woff2") format("woff2");
+  src: url("/assets/fonts/PlusJakartaSans-VariableFont_wght.woff2")
+    format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -18,7 +19,8 @@
 
 @font-face {
   font-family: "Bricolage Grotesque";
-  src: url("/assets/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.woff2") format("woff2");
+  src: url("/assets/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.woff2")
+    format("woff2");
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
@@ -78,14 +80,14 @@
     --sidebar-foreground: 1 0 0;
     --sidebar-primary: 0.88 0.18 95;
     --sidebar-primary-foreground: 0.18 0.02 30;
-    --sidebar-accent: 0.36 0.20 290;
+    --sidebar-accent: 0.36 0.2 290;
     --sidebar-accent-foreground: 1 0 0;
-    --sidebar-border: 0.36 0.20 290;
+    --sidebar-border: 0.36 0.2 290;
     --sidebar-ring: 0.88 0.18 95;
 
     /* Library custom tokens */
     --lib-violet: 0.45 0.22 290;
-    --lib-violet-dark: 0.36 0.20 290;
+    --lib-violet-dark: 0.36 0.2 290;
     --lib-violet-light: 0.62 0.15 290;
     --lib-gold: 0.88 0.18 95;
     --lib-gold-dark: 0.78 0.16 90;
@@ -106,7 +108,12 @@
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: "Bricolage Grotesque", sans-serif;
   }
 
@@ -173,12 +180,16 @@
     position: relative;
     overflow: hidden;
     background-color: oklch(var(--background));
-    box-shadow: 0 0 40px rgba(0,0,0,0.15);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
   }
 
   /* Sticky red header */
   .lib-header {
-    background: linear-gradient(135deg, oklch(var(--lib-violet-dark)), oklch(var(--lib-violet)));
+    background: linear-gradient(
+      135deg,
+      oklch(var(--lib-violet-dark)),
+      oklch(var(--lib-violet))
+    );
     color: white;
     position: sticky;
     top: 0;
@@ -195,7 +206,7 @@
     max-width: 430px;
     z-index: 50;
     padding-bottom: env(safe-area-inset-bottom);
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
   }
 
   /* Content area with bottom nav padding */
@@ -208,7 +219,7 @@
   .lib-card {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     border: 1px solid oklch(var(--border));
   }
 

@@ -118,8 +118,8 @@ export default function MoreScreen({ onNavigate, role }: MoreScreenProps) {
                       : ""
                   }`}
                 >
-                  <div className="w-9 h-9 rounded-xl bg-lib-red/10 flex items-center justify-center flex-shrink-0">
-                    <item.icon size={18} className="text-lib-red" />
+                  <div className="w-9 h-9 rounded-xl bg-lib-violet/10 flex items-center justify-center flex-shrink-0">
+                    <item.icon size={18} className="text-lib-violet" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-foreground">
@@ -141,7 +141,7 @@ export default function MoreScreen({ onNavigate, role }: MoreScreenProps) {
       {/* Library info */}
       <div
         className="lib-card p-4 text-center"
-        style={{ background: "linear-gradient(135deg, #990000, #CC0000)" }}
+        style={{ background: "linear-gradient(135deg, #3B0764, #7C3AED)" }}
       >
         <p
           className="font-display font-bold text-lg"

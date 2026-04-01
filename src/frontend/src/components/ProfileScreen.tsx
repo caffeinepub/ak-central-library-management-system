@@ -100,7 +100,7 @@ export default function ProfileScreen() {
   }
 
   const roleColors: Record<string, string> = {
-    Admin: "bg-lib-red/10 text-lib-red border-lib-red/20",
+    Admin: "bg-lib-violet/10 text-lib-violet border-lib-violet/20",
     Librarian: "bg-blue-50 text-blue-700 border-blue-200",
     Staff: "bg-purple-50 text-purple-700 border-purple-200",
     Student: "bg-green-50 text-green-700 border-green-200",
@@ -111,8 +111,8 @@ export default function ProfileScreen() {
       {/* Profile header */}
       <div className="bg-white border-b border-border px-4 py-6">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-lib-red/10 border-2 border-lib-red/20 flex items-center justify-center">
-            <span className="font-display font-bold text-2xl text-lib-red">
+          <div className="w-16 h-16 rounded-2xl bg-lib-violet/10 border-2 border-lib-violet/20 flex items-center justify-center">
+            <span className="font-display font-bold text-2xl text-lib-violet">
               {currentUser.name[0]}
             </span>
           </div>
@@ -175,7 +175,7 @@ export default function ProfileScreen() {
         <Button
           data-ocid="profile.change_password_button"
           variant="outline"
-          className="w-full border-lib-red text-lib-red hover:bg-lib-red/5 font-semibold"
+          className="w-full border-lib-violet text-lib-violet hover:bg-lib-violet/5 font-semibold"
           onClick={() => setShowChangePass(true)}
         >
           <Key size={16} className="mr-2" />
@@ -185,7 +185,7 @@ export default function ProfileScreen() {
         <Button
           data-ocid="profile.logout_button"
           variant="destructive"
-          className="w-full font-semibold bg-lib-red hover:bg-lib-red-dark"
+          className="w-full font-semibold bg-lib-violet hover:bg-lib-violet-dark"
           onClick={logout}
         >
           <LogOut size={16} className="mr-2" />
@@ -207,7 +207,7 @@ export default function ProfileScreen() {
             href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-lib-red font-semibold"
+            className="text-lib-violet font-semibold"
           >
             caffeine.ai
           </a>
@@ -339,7 +339,7 @@ export default function ProfileScreen() {
               Cancel
             </Button>
             <Button
-              className="flex-1 bg-lib-red hover:bg-lib-red-dark text-white"
+              className="flex-1 bg-lib-violet hover:bg-lib-violet-dark text-white"
               onClick={handleChangePassword}
             >
               Update Password
@@ -362,8 +362,8 @@ function ProfileRow({
 }) {
   return (
     <div className="flex items-center gap-3 p-3 rounded-xl bg-secondary">
-      <div className="w-8 h-8 rounded-lg bg-lib-red/10 flex items-center justify-center flex-shrink-0">
-        <Icon size={16} className="text-lib-red" />
+      <div className="w-8 h-8 rounded-lg bg-lib-violet/10 flex items-center justify-center flex-shrink-0">
+        <Icon size={16} className="text-lib-violet" />
       </div>
       <div>
         <p className="text-xs text-muted-foreground">{label}</p>

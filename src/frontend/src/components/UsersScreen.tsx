@@ -23,7 +23,7 @@ import {
   generateId,
   storage,
 } from "@/lib/storage";
-import { Plus, UserCheck, UserX } from "lucide-react";
+import { Pencil, Plus, UserCheck, UserX } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -57,8 +57,48 @@ export default function UsersScreen() {
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState<Omit<User, "id">>(emptyUser);
 
+  // Edit state
+  const [editUser, setEditUser] = useState<User | null>(null);
+  const [editName, setEditName] = useState("");
+  const [editUsername, setEditUsername] = useState("");
+  const [editDept, setEditDept] = useState("");
+  const [editPassword, setEditPassword] = useState("");
+
   const approvedUsers = users.filter((u) => u.approved && !u.pending);
   const pendingUsers = users.filter((u) => !u.approved || u.pending);
+
+  function openEdit(u: User) {
+    setEditUser(u);
+    setEditName(u.name);
+    setEditUsername(u.username);
+    setEditDept(u.department);
+    setEditPassword(u.password);
+  }
+
+  function handleSaveEdit() {
+    if (!editUser) return;
+    if (!editName.trim() || !editUsername.trim() || !editDept) {
+      toast.error("Name, username, and department are required");
+      return;
+    }
+    const existing = storage.getUserByUsername(editUsername.trim());
+    if (existing && existing.id !== editUser.id) {
+      toast.error("Username already taken by another user");
+      return;
+    }
+    const nameChanged = editName.trim() !== editUser.name;
+    storage.updateUser({
+      ...editUser,
+      name: editUser.nameUpdated ? editUser.name : editName.trim(),
+      username: editUsername.trim(),
+      department: editDept,
+      password: editPassword,
+      nameUpdated: editUser.nameUpdated || nameChanged,
+    });
+    refresh();
+    setEditUser(null);
+    toast.success("User details updated successfully");
+  }
 
   function handleApprove(u: User) {
     storage.updateUser({ ...u, approved: true, pending: false });
@@ -102,7 +142,7 @@ export default function UsersScreen() {
   function getRoleBadgeStyle(role: LibraryRole): string {
     switch (role) {
       case "Admin":
-        return "bg-lib-red/10 text-lib-red border-lib-red/20";
+        return "bg-lib-violet/10 text-lib-violet border-lib-violet/20";
       case "Librarian":
         return "bg-blue-50 text-blue-700 border-blue-200";
       case "Staff":
@@ -118,13 +158,13 @@ export default function UsersScreen() {
         <TabsList className="w-full rounded-none border-b border-border bg-white h-10">
           <TabsTrigger
             value="all"
-            className="flex-1 data-[state=active]:text-lib-red data-[state=active]:border-b-2 data-[state=active]:border-lib-red rounded-none text-xs font-semibold"
+            className="flex-1 data-[state=active]:text-lib-violet data-[state=active]:border-b-2 data-[state=active]:border-lib-violet rounded-none text-xs font-semibold"
           >
             All Users ({approvedUsers.length})
           </TabsTrigger>
           <TabsTrigger
             value="pending"
-            className="flex-1 data-[state=active]:text-lib-red data-[state=active]:border-b-2 data-[state=active]:border-lib-red rounded-none text-xs font-semibold"
+            className="flex-1 data-[state=active]:text-lib-violet data-[state=active]:border-b-2 data-[state=active]:border-lib-violet rounded-none text-xs font-semibold"
           >
             Pending {pendingUsers.length > 0 ? `(${pendingUsers.length})` : ""}
           </TabsTrigger>
@@ -140,8 +180,8 @@ export default function UsersScreen() {
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className="w-9 h-9 rounded-full bg-lib-red/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-lib-red font-bold text-sm">
+                    <div className="w-9 h-9 rounded-full bg-lib-violet/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-lib-violet font-bold text-sm">
                         {u.name[0]}
                       </span>
                     </div>
@@ -166,15 +206,27 @@ export default function UsersScreen() {
                     >
                       {u.role}
                     </Badge>
-                    {u.role !== "Admin" && (
+                    <div className="flex items-center gap-2">
                       <button
                         type="button"
-                        onClick={() => handleDelete(u)}
-                        className="text-xs text-destructive hover:underline"
+                        data-ocid={`users.edit_button.${idx + 1}`}
+                        onClick={() => openEdit(u)}
+                        className="text-xs text-lib-violet hover:text-lib-violet-dark"
+                        title="Edit user"
                       >
-                        Remove
+                        <Pencil size={13} />
                       </button>
-                    )}
+                      {u.role !== "Admin" && (
+                        <button
+                          type="button"
+                          data-ocid={`users.delete_button.${idx + 1}`}
+                          onClick={() => handleDelete(u)}
+                          className="text-xs text-destructive hover:underline"
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -268,12 +320,13 @@ export default function UsersScreen() {
           setForm(emptyUser);
           setShowForm(true);
         }}
-        className="fixed bottom-20 right-4 w-14 h-14 bg-lib-red hover:bg-lib-red-dark text-white rounded-full shadow-lg flex items-center justify-center no-print"
+        className="fixed bottom-20 right-4 w-14 h-14 bg-lib-violet hover:bg-lib-violet-dark text-white rounded-full shadow-lg flex items-center justify-center no-print"
         style={{ zIndex: 40 }}
       >
         <Plus size={24} />
       </button>
 
+      {/* Add User Dialog */}
       <Dialog open={showForm} onOpenChange={setShowForm}>
         <DialogContent className="max-w-sm mx-auto rounded-2xl p-0 overflow-hidden">
           <DialogHeader className="px-4 pt-4 pb-2 border-b border-border">
@@ -377,11 +430,92 @@ export default function UsersScreen() {
               Cancel
             </Button>
             <Button
-              data-ocid="users.add_button"
-              className="flex-1 bg-lib-red hover:bg-lib-red-dark text-white"
+              data-ocid="users.add_submit_button"
+              className="flex-1 bg-lib-violet hover:bg-lib-violet-dark text-white"
               onClick={handleAdd}
             >
               Create User
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Edit User Dialog */}
+      <Dialog
+        open={!!editUser}
+        onOpenChange={(open) => !open && setEditUser(null)}
+      >
+        <DialogContent className="max-w-sm mx-auto rounded-2xl p-0 overflow-hidden">
+          <DialogHeader className="px-4 pt-4 pb-2 border-b border-border">
+            <DialogTitle className="font-display font-bold">
+              Edit User
+            </DialogTitle>
+          </DialogHeader>
+          <div className="px-4 py-3 space-y-3 max-h-[60vh] overflow-y-auto">
+            <div>
+              <Label className="text-xs font-semibold">Full Name *</Label>
+              <Input
+                data-ocid="users.edit.input"
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+                className="mt-1"
+                disabled={!!editUser?.nameUpdated}
+              />
+              {editUser?.nameUpdated && (
+                <p className="text-xs text-red-500 mt-1">
+                  Name has already been updated and cannot be changed.
+                </p>
+              )}
+            </div>
+            <div>
+              <Label className="text-xs font-semibold">
+                Registration No. / Username *
+              </Label>
+              <Input
+                value={editUsername}
+                onChange={(e) => setEditUsername(e.target.value)}
+                className="mt-1"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold">Department *</Label>
+              <Select value={editDept} onValueChange={setEditDept}>
+                <SelectTrigger className="mt-1">
+                  <SelectValue placeholder="Select department" />
+                </SelectTrigger>
+                <SelectContent>
+                  {DEPTS.map((d) => (
+                    <SelectItem key={d} value={d}>
+                      {d}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label className="text-xs font-semibold">Password</Label>
+              <Input
+                value={editPassword}
+                onChange={(e) => setEditPassword(e.target.value)}
+                className="mt-1"
+              />
+            </div>
+          </div>
+          <div className="px-4 py-3 border-t border-border flex gap-2">
+            <Button
+              data-ocid="users.edit.cancel_button"
+              variant="outline"
+              className="flex-1"
+              onClick={() => setEditUser(null)}
+            >
+              Cancel
+            </Button>
+            <Button
+              data-ocid="users.edit.save_button"
+              className="flex-1 bg-lib-violet hover:bg-lib-violet-dark text-white"
+              onClick={handleSaveEdit}
+            >
+              Save Changes
             </Button>
           </div>
         </DialogContent>

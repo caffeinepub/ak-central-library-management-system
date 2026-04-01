@@ -201,8 +201,8 @@ export default function BooksScreen() {
             onClick={() => setDdcFilter(f.value)}
             className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-semibold transition-colors ${
               ddcFilter === f.value
-                ? "bg-lib-red text-white"
-                : "bg-secondary text-muted-foreground hover:bg-lib-red/10"
+                ? "bg-lib-violet text-white"
+                : "bg-secondary text-muted-foreground hover:bg-lib-violet/10"
             }`}
           >
             {f.label}
@@ -250,8 +250,8 @@ export default function BooksScreen() {
               onClick={() => setSelectedBook(b)}
               className="lib-card w-full text-left p-3 flex gap-3 items-start active:opacity-80 transition-opacity"
             >
-              <div className="w-10 h-12 rounded-lg bg-lib-red/10 flex items-center justify-center flex-shrink-0">
-                <span className="text-lib-red font-bold text-xs">
+              <div className="w-10 h-12 rounded-lg bg-lib-violet/10 flex items-center justify-center flex-shrink-0">
+                <span className="text-lib-violet font-bold text-xs">
                   {b.ddcNumber}
                 </span>
               </div>
@@ -296,7 +296,7 @@ export default function BooksScreen() {
           type="button"
           data-ocid="books.add_button"
           onClick={openAdd}
-          className="fixed bottom-20 right-4 w-14 h-14 bg-lib-red hover:bg-lib-red-dark text-white rounded-full shadow-lg flex items-center justify-center no-print"
+          className="fixed bottom-20 right-4 w-14 h-14 bg-lib-violet hover:bg-lib-violet-dark text-white rounded-full shadow-lg flex items-center justify-center no-print"
           style={{ zIndex: 40 }}
         >
           <Plus size={24} />
@@ -360,10 +360,10 @@ export default function BooksScreen() {
                 {/* Location */}
                 <div
                   data-ocid="books.detail.location_section"
-                  className="lib-card p-3 border-l-4 border-l-lib-red"
+                  className="lib-card p-3 border-l-4 border-l-lib-violet"
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <MapPin size={16} className="text-lib-red" />
+                    <MapPin size={16} className="text-lib-violet" />
                     <p className="font-display font-bold text-sm text-foreground">
                       Book Location
                     </p>
@@ -402,7 +402,7 @@ export default function BooksScreen() {
                     <Button
                       data-ocid="books.detail.edit_button"
                       variant="outline"
-                      className="flex-1 border-lib-red text-lib-red hover:bg-lib-red/5"
+                      className="flex-1 border-lib-violet text-lib-violet hover:bg-lib-violet/5"
                       onClick={() => openEdit(selectedBook)}
                     >
                       Edit Book
@@ -530,7 +530,9 @@ export default function BooksScreen() {
                 className="mt-1"
               />
             </div>
-            <p className="font-semibold text-xs text-lib-red mt-2">Location</p>
+            <p className="font-semibold text-xs text-lib-violet mt-2">
+              Location
+            </p>
             <div className="grid grid-cols-2 gap-2">
               <div>
                 <Label className="text-xs">Floor</Label>
@@ -600,7 +602,7 @@ export default function BooksScreen() {
             </Button>
             <Button
               data-ocid="books.form.submit_button"
-              className="flex-1 bg-lib-red hover:bg-lib-red-dark text-white"
+              className="flex-1 bg-lib-violet hover:bg-lib-violet-dark text-white"
               onClick={handleSave}
             >
               {editingBook ? "Save Changes" : "Add Book"}

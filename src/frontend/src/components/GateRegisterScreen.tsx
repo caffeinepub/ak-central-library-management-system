@@ -102,7 +102,7 @@ export default function GateRegisterScreen() {
             data-ocid="gate.entry_button"
             onClick={handleEntry}
             disabled={loading}
-            className="w-full bg-lib-red hover:bg-lib-red-dark text-white font-bold"
+            className="w-full bg-lib-violet hover:bg-lib-violet-dark text-white font-bold"
           >
             <LogIn size={16} className="mr-2" />
             Log Entry
@@ -209,7 +209,9 @@ export default function GateRegisterScreen() {
       <div className="px-4 pb-4">
         <div className="grid grid-cols-2 gap-3">
           <div className="lib-card p-3 text-center">
-            <p className="font-bold text-xl text-lib-red">{todayLog.length}</p>
+            <p className="font-bold text-xl text-lib-violet">
+              {todayLog.length}
+            </p>
             <p className="text-xs text-muted-foreground">Total Entries</p>
           </div>
           <div className="lib-card p-3 text-center">

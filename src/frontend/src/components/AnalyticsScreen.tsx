@@ -176,7 +176,7 @@ export default function AnalyticsScreen() {
               </p>
               <div className="flex-1 h-5 bg-secondary rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-lib-red rounded-full transition-all"
+                  className="h-full bg-lib-violet rounded-full transition-all"
                   style={{
                     width: `${(count / maxCirc) * 100}%`,
                     minWidth: count > 0 ? "8px" : "0",
@@ -267,7 +267,7 @@ export default function AnalyticsScreen() {
                       {c.borrowerName} · {days}d overdue
                     </p>
                   </div>
-                  <span className="text-xs font-bold text-lib-red">
+                  <span className="text-xs font-bold text-lib-violet">
                     ₹{fine}
                   </span>
                 </div>
@@ -294,7 +294,7 @@ export default function AnalyticsScreen() {
             />
             <Button
               size="sm"
-              className="bg-lib-red hover:bg-lib-red-dark text-white px-3"
+              className="bg-lib-violet hover:bg-lib-violet-dark text-white px-3"
               onClick={postAnnouncement}
             >
               <Plus size={16} />

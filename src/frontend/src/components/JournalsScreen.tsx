@@ -140,7 +140,7 @@ export default function JournalsScreen() {
                     <Button
                       size="sm"
                       variant="outline"
-                      className="text-xs h-7 px-2 border-lib-red text-lib-red"
+                      className="text-xs h-7 px-2 border-lib-violet text-lib-violet"
                       onClick={() => openEdit(j)}
                     >
                       Edit
@@ -166,7 +166,7 @@ export default function JournalsScreen() {
           type="button"
           data-ocid="journals.add_button"
           onClick={openAdd}
-          className="fixed bottom-20 right-4 w-14 h-14 bg-lib-red hover:bg-lib-red-dark text-white rounded-full shadow-lg flex items-center justify-center no-print"
+          className="fixed bottom-20 right-4 w-14 h-14 bg-lib-violet hover:bg-lib-violet-dark text-white rounded-full shadow-lg flex items-center justify-center no-print"
           style={{ zIndex: 40 }}
         >
           <Plus size={24} />
@@ -279,7 +279,7 @@ export default function JournalsScreen() {
               Cancel
             </Button>
             <Button
-              className="flex-1 bg-lib-red hover:bg-lib-red-dark text-white"
+              className="flex-1 bg-lib-violet hover:bg-lib-violet-dark text-white"
               onClick={handleSave}
             >
               Save

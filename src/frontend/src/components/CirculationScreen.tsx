@@ -31,21 +31,21 @@ export default function CirculationScreen() {
           <TabsTrigger
             data-ocid="circulation.tab.1"
             value="issue"
-            className="flex-1 data-[state=active]:text-lib-red data-[state=active]:border-b-2 data-[state=active]:border-lib-red rounded-none text-xs font-semibold"
+            className="flex-1 data-[state=active]:text-lib-violet data-[state=active]:border-b-2 data-[state=active]:border-lib-violet rounded-none text-xs font-semibold"
           >
             Issue
           </TabsTrigger>
           <TabsTrigger
             data-ocid="circulation.tab.2"
             value="return"
-            className="flex-1 data-[state=active]:text-lib-red data-[state=active]:border-b-2 data-[state=active]:border-lib-red rounded-none text-xs font-semibold"
+            className="flex-1 data-[state=active]:text-lib-violet data-[state=active]:border-b-2 data-[state=active]:border-lib-violet rounded-none text-xs font-semibold"
           >
             Return/Renew
           </TabsTrigger>
           <TabsTrigger
             data-ocid="circulation.tab.3"
             value="overdue"
-            className="flex-1 data-[state=active]:text-lib-red data-[state=active]:border-b-2 data-[state=active]:border-lib-red rounded-none text-xs font-semibold"
+            className="flex-1 data-[state=active]:text-lib-violet data-[state=active]:border-b-2 data-[state=active]:border-lib-violet rounded-none text-xs font-semibold"
           >
             Overdue
           </TabsTrigger>
@@ -196,7 +196,7 @@ function IssueTab({
                   setSelectedBook(b.id);
                   setBookSearch(b.title);
                 }}
-                className={`w-full text-left px-3 py-2.5 border-b border-border last:border-0 hover:bg-secondary transition-colors ${selectedBook === b.id ? "bg-lib-red/5" : ""}`}
+                className={`w-full text-left px-3 py-2.5 border-b border-border last:border-0 hover:bg-secondary transition-colors ${selectedBook === b.id ? "bg-lib-violet/5" : ""}`}
               >
                 <p className="text-sm font-semibold text-foreground line-clamp-1">
                   {b.title}
@@ -230,7 +230,7 @@ function IssueTab({
         data-ocid="circulation.issue.submit_button"
         onClick={handleIssue}
         disabled={loading || !selectedUser || !selectedBook}
-        className="w-full bg-lib-red hover:bg-lib-red-dark text-white font-bold"
+        className="w-full bg-lib-violet hover:bg-lib-violet-dark text-white font-bold"
       >
         {loading ? "Issuing…" : "Issue Book"}
       </Button>
@@ -381,7 +381,7 @@ function ReturnTab({
                 <Button
                   data-ocid="circulation.return.submit_button"
                   size="sm"
-                  className="flex-1 bg-lib-red hover:bg-lib-red-dark text-white text-xs"
+                  className="flex-1 bg-lib-violet hover:bg-lib-violet-dark text-white text-xs"
                   onClick={() => handleReturn(c)}
                   disabled={loading}
                 >
@@ -457,7 +457,7 @@ function OverdueTab({ circulations }: { circulations: Circulation[] }) {
               <span className="text-xs text-orange-600 font-semibold">
                 {days} days overdue
               </span>
-              <span className="text-xs font-bold text-lib-red">
+              <span className="text-xs font-bold text-lib-violet">
                 Fine: ₹{fine}
               </span>
             </div>
@@ -546,7 +546,7 @@ function MyBooksView() {
                   <Button
                     size="sm"
                     variant="outline"
-                    className="text-xs h-7 border-lib-red text-lib-red hover:bg-lib-red/5"
+                    className="text-xs h-7 border-lib-violet text-lib-violet hover:bg-lib-violet/5"
                     onClick={() => handleRenew(c)}
                     disabled={loading}
                   >

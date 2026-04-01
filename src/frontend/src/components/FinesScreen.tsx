@@ -104,7 +104,7 @@ export default function FinesScreen() {
                   )}
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p className="font-display font-bold text-lg text-lib-red">
+                  <p className="font-display font-bold text-lg text-lib-violet">
                     ₹{fine.amount}
                   </p>
                   <Badge
@@ -131,7 +131,7 @@ export default function FinesScreen() {
                   <Button
                     data-ocid={`fines.pay_button.${idx + 1}`}
                     size="sm"
-                    className="flex-1 bg-lib-red hover:bg-lib-red-dark text-white text-xs"
+                    className="flex-1 bg-lib-violet hover:bg-lib-violet-dark text-white text-xs"
                     onClick={() => handlePay(fine)}
                   >
                     Mark as Paid
@@ -141,7 +141,7 @@ export default function FinesScreen() {
                   <Button
                     size="sm"
                     variant="outline"
-                    className="flex-1 border-lib-red text-lib-red text-xs"
+                    className="flex-1 border-lib-violet text-lib-violet text-xs"
                     onClick={() => openReceipt(fine)}
                   >
                     <Receipt size={12} className="mr-1" />
@@ -191,7 +191,7 @@ function FineReceipt({
   return (
     <div>
       {/* Receipt header */}
-      <div className="bg-lib-red p-4 text-center">
+      <div className="bg-lib-violet p-4 text-center">
         <p className="text-lib-gold font-display font-bold text-lg">
           AK Central Library
         </p>
@@ -239,7 +239,7 @@ function FineReceipt({
           <Button
             data-ocid="fines.receipt.print_button"
             size="sm"
-            className="flex-1 bg-lib-red hover:bg-lib-red-dark text-white text-xs"
+            className="flex-1 bg-lib-violet hover:bg-lib-violet-dark text-white text-xs"
             onClick={() => window.print()}
           >
             <Printer size={12} className="mr-1" />

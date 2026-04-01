@@ -53,19 +53,19 @@ export default function BottomNav({
               onClick={() => onNavigate(id)}
               className={`flex-1 flex flex-col items-center justify-center gap-0.5 transition-colors ${
                 isActive
-                  ? "text-lib-red"
-                  : "text-muted-foreground hover:text-lib-red-light"
+                  ? "text-lib-violet"
+                  : "text-muted-foreground hover:text-lib-violet-light"
               }`}
               aria-label={label}
               aria-current={isActive ? "page" : undefined}
             >
               <div
-                className={`p-1.5 rounded-xl transition-colors ${isActive ? "bg-lib-red/10" : ""}`}
+                className={`p-1.5 rounded-xl transition-colors ${isActive ? "bg-lib-violet/10" : ""}`}
               >
                 <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
               </div>
               <span
-                className={`text-[10px] font-semibold leading-none ${isActive ? "text-lib-red" : "text-muted-foreground"}`}
+                className={`text-[10px] font-semibold leading-none ${isActive ? "text-lib-violet" : "text-muted-foreground"}`}
               >
                 {label}
               </span>

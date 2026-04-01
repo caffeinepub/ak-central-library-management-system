@@ -73,8 +73,8 @@ export default function DashboardScreen({
       label: "Total Books",
       value: totalBooks,
       icon: BookOpen,
-      color: "text-lib-red",
-      bg: "bg-lib-red/10",
+      color: "text-lib-violet",
+      bg: "bg-lib-violet/10",
     },
     {
       label: "Issued Today",
@@ -104,8 +104,8 @@ export default function DashboardScreen({
       label: "Books Borrowed",
       value: myCirculations.length,
       icon: BookMarked,
-      color: "text-lib-red",
-      bg: "bg-lib-red/10",
+      color: "text-lib-violet",
+      bg: "bg-lib-violet/10",
     },
     {
       label: "Fines Due",
@@ -150,7 +150,7 @@ export default function DashboardScreen({
             </p>
             <Badge
               variant="outline"
-              className="text-xs border-lib-red text-lib-red mt-0.5"
+              className="text-xs border-lib-violet text-lib-violet mt-0.5"
             >
               {role}
             </Badge>
@@ -206,7 +206,7 @@ export default function DashboardScreen({
             <button
               type="button"
               onClick={() => onNavigate("circulation")}
-              className="text-xs text-lib-red font-semibold"
+              className="text-xs text-lib-violet font-semibold"
             >
               See All
             </button>
@@ -214,8 +214,8 @@ export default function DashboardScreen({
           <div className="space-y-2">
             {myCirculations.slice(0, 2).map((c) => (
               <div key={c.id} className="lib-card p-3 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-lib-red/10 flex items-center justify-center flex-shrink-0">
-                  <BookOpen size={16} className="text-lib-red" />
+                <div className="w-8 h-8 rounded-lg bg-lib-violet/10 flex items-center justify-center flex-shrink-0">
+                  <BookOpen size={16} className="text-lib-violet" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-foreground truncate">
@@ -248,7 +248,7 @@ export default function DashboardScreen({
                 data-ocid="dashboard.quick_action.1"
                 icon={PlusCircle}
                 label="Issue Book"
-                color="bg-lib-red"
+                color="bg-lib-violet"
                 onClick={() => onNavigate("circulation")}
               />
               <QuickAction
@@ -272,7 +272,7 @@ export default function DashboardScreen({
                 data-ocid="dashboard.quick_action.1"
                 icon={Search}
                 label="Search Books"
-                color="bg-lib-red"
+                color="bg-lib-violet"
                 onClick={() => onNavigate("books")}
               />
               <QuickAction
@@ -298,7 +298,7 @@ export default function DashboardScreen({
       {announcements.length > 0 && (
         <div className="px-4 mb-4">
           <div className="flex items-center gap-2 mb-2">
-            <Bell size={14} className="text-lib-red" />
+            <Bell size={14} className="text-lib-violet" />
             <p className="font-display font-semibold text-sm text-foreground">
               Announcements
             </p>
@@ -307,7 +307,7 @@ export default function DashboardScreen({
             {announcements.slice(0, 3).map((a) => (
               <div
                 key={a.id}
-                className="lib-card p-3 border-l-4 border-l-lib-red"
+                className="lib-card p-3 border-l-4 border-l-lib-violet"
               >
                 <p className="text-sm text-foreground leading-relaxed">
                   {a.text}
@@ -379,7 +379,7 @@ export default function DashboardScreen({
             href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-lib-red font-semibold"
+            className="text-lib-violet font-semibold"
           >
             caffeine.ai
           </a>

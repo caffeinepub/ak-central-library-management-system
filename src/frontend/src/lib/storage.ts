@@ -30,6 +30,7 @@ export interface User {
   approved: boolean;
   year?: string;
   pending?: boolean;
+  nameUpdated?: boolean;
 }
 
 export interface Book {

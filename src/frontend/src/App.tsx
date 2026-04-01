@@ -3,6 +3,7 @@ import { LibraryProvider, useLibrary } from "@/lib/LibraryContext";
 import { BookOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import AIAssistant from "@/components/AIAssistant";
 import AnalyticsScreen from "@/components/AnalyticsScreen";
 import BooksScreen from "@/components/BooksScreen";
 import BottomNav, { type AppPage } from "@/components/BottomNav";
@@ -91,7 +92,7 @@ function MainApp() {
         <button
           type="button"
           onClick={() => navigate("fines")}
-          className="bg-lib-gold text-lib-red-dark rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs"
+          className="bg-lib-gold text-lib-violet-dark rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs"
         >
           {myUnpaidFines}
         </button>
@@ -158,6 +159,9 @@ function MainApp() {
       {/* Bottom Navigation */}
       <BottomNav current={page} onNavigate={navigate} role={role} />
 
+      {/* AI Assistant — available on all screens when logged in */}
+      <AIAssistant />
+
       <Toaster position="top-center" richColors />
     </div>
   );
@@ -174,8 +178,8 @@ export default function App() {
     return (
       <div className="mobile-container flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <div className="w-16 h-16 rounded-2xl bg-lib-red/10 flex items-center justify-center mx-auto mb-4">
-            <BookOpen size={32} className="text-lib-red" />
+          <div className="w-16 h-16 rounded-2xl bg-lib-violet/10 flex items-center justify-center mx-auto mb-4">
+            <BookOpen size={32} className="text-lib-violet" />
           </div>
           <p className="font-display font-bold text-lib-gold text-xl">
             AK Central Library

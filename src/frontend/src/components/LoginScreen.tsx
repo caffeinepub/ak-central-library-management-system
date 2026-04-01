@@ -13,6 +13,8 @@ export default function LoginScreen() {
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showForgot, setShowForgot] = useState(false);
+  const [forgotId, setForgotId] = useState("");
   const [showRegister, setShowRegister] = useState(false);
   const [regForm, setRegForm] = useState({
     registerId: "",
@@ -68,9 +70,9 @@ export default function LoginScreen() {
 
   if (showRegister) {
     return (
-      <div className="min-h-screen min-h-dvh flex flex-col bg-lib-red">
+      <div className="min-h-screen min-h-dvh flex flex-col bg-lib-violet">
         {/* Header */}
-        <div className="flex items-center gap-3 px-4 py-4 bg-lib-red-dark">
+        <div className="flex items-center gap-3 px-4 py-4 bg-lib-violet-dark">
           <button
             type="button"
             onClick={() => setShowRegister(false)}
@@ -82,7 +84,7 @@ export default function LoginScreen() {
         </div>
 
         <div className="flex-1 bg-white rounded-t-3xl mt-2 p-6 overflow-y-auto">
-          <h2 className="font-display text-xl font-bold text-lib-red mb-1">
+          <h2 className="font-display text-xl font-bold text-lib-violet mb-1">
             New Student Registration
           </h2>
           <p className="text-sm text-muted-foreground mb-6">
@@ -177,7 +179,7 @@ export default function LoginScreen() {
             </div>
             <Button
               type="submit"
-              className="w-full bg-lib-red hover:bg-lib-red-dark text-white font-bold py-3"
+              className="w-full bg-lib-violet hover:bg-lib-violet-dark text-white font-bold py-3"
             >
               Submit Registration Request
             </Button>
@@ -192,7 +194,7 @@ export default function LoginScreen() {
       className="min-h-screen min-h-dvh flex flex-col"
       style={{
         background:
-          "linear-gradient(160deg, #990000 0%, #CC0000 45%, #DD2222 100%)",
+          "linear-gradient(160deg, #3B0764 0%, #7C3AED 45%, #8B5CF6 100%)",
       }}
     >
       {/* Logo section */}
@@ -253,7 +255,7 @@ export default function LoginScreen() {
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Enter your username"
               autoComplete="username"
-              className="mt-1 h-12 bg-white border-border focus:border-lib-red focus-visible:ring-lib-red/20"
+              className="mt-1 h-12 bg-white border-border focus:border-lib-violet focus-visible:ring-lib-violet/20"
               disabled={loading}
             />
           </div>
@@ -274,7 +276,7 @@ export default function LoginScreen() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
                 autoComplete="current-password"
-                className="h-12 pr-12 bg-white border-border focus:border-lib-red focus-visible:ring-lib-red/20"
+                className="h-12 pr-12 bg-white border-border focus:border-lib-violet focus-visible:ring-lib-violet/20"
                 disabled={loading}
               />
               <button
@@ -294,7 +296,7 @@ export default function LoginScreen() {
             className="w-full h-12 font-bold text-base mt-2"
             style={{
               backgroundColor: "#FFD700",
-              color: "#CC0000",
+              color: "#7C3AED",
               border: "none",
             }}
           >
@@ -305,12 +307,63 @@ export default function LoginScreen() {
           </Button>
         </form>
 
-        <div className="mt-6 text-center">
+        {/* Forgot Password */}
+        {!showForgot ? (
+          <div className="mt-4 text-center">
+            <button
+              type="button"
+              data-ocid="login.forgot_password_link"
+              onClick={() => setShowForgot(true)}
+              className="text-sm text-lib-violet font-medium underline underline-offset-2"
+            >
+              Forgot Password?
+            </button>
+          </div>
+        ) : (
+          <div
+            data-ocid="login.forgot_password_panel"
+            className="mt-4 rounded-2xl border border-lib-violet/20 bg-lib-violet/5 p-4 space-y-3"
+          >
+            <h3 className="font-display font-bold text-lib-violet text-base">
+              Forgot Password?
+            </h3>
+            <div>
+              <Label htmlFor="forgot-id" className="text-xs font-semibold">
+                Register ID / Username
+              </Label>
+              <Input
+                id="forgot-id"
+                data-ocid="login.forgot_password.input"
+                value={forgotId}
+                onChange={(e) => setForgotId(e.target.value)}
+                placeholder="Enter your Register ID"
+                className="mt-1 h-10 border-lib-violet/30 focus:border-lib-violet"
+              />
+            </div>
+            <div className="rounded-xl bg-lib-violet/10 border border-lib-violet/20 px-3 py-2.5 text-xs text-lib-violet leading-relaxed">
+              Please contact your Librarian or Admin with your Register ID to
+              reset your password.
+            </div>
+            <button
+              type="button"
+              data-ocid="login.forgot_password.back_button"
+              onClick={() => {
+                setShowForgot(false);
+                setForgotId("");
+              }}
+              className="text-xs text-lib-violet font-semibold underline underline-offset-2"
+            >
+              Back to Login
+            </button>
+          </div>
+        )}
+
+        <div className="mt-4 text-center">
           <button
             type="button"
             data-ocid="login.register_link"
             onClick={() => setShowRegister(true)}
-            className="text-sm text-lib-red font-semibold underline underline-offset-2"
+            className="text-sm text-lib-violet font-semibold underline underline-offset-2"
           >
             Request Registration (New Students)
           </button>
